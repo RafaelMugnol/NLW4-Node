@@ -5,7 +5,7 @@ import { app } from "../app";
 
 import createConnection from "../database";
 
-describe("Surveys", async () => {
+describe("Surveys", () => {
   beforeAll(async () => {
     const connection = await createConnection();
     await connection.runMigrations();
@@ -24,7 +24,7 @@ describe("Surveys", async () => {
     });
 
     expect(response.status).toBe(201);
-    expect(response.badRequest).toHaveProperty("id");
+    expect(response.body).toHaveProperty("id");
   });
 
   it("Should be able to get all surveys", async () => {
